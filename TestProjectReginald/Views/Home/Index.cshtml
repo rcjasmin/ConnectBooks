@@ -1,0 +1,128 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Quickbooks integration </h1>
+    <p class="lead">Test Application build by Reginald Cherenfant Jasmin.</p>
+
+</div>
+
+
+@if (!string.IsNullOrEmpty(ViewBag.Token))
+{
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-success">
+                <strong>Success!</strong> Connection to QuickBooks established.
+            </div>
+        </div>
+    </div>
+}
+
+@if (!string.IsNullOrEmpty(ViewBag.Message))
+{
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-success">
+                <strong>Success!</strong> @ViewBag.Message
+            </div>
+        </div>
+    </div>
+}
+
+<div class="col-md-4">
+    <h2>Connect to Quickbooks</h2>
+    <p>This button allows users to connect to quickbooks and retreive the API request token</p>
+    <p><a class="btn btn-default" href="javascript:connect()">Connect to Quickbooks </a></p>
+</div>
+
+<div class="col-md-4">
+    <h2>Fecth data on Quickbooks</h2>
+    <p>This button allows users to fetch and display customer's data on the screen</p>
+    <p><a class="btn btn-default" href="javascript:fetch()">Fetch customers data</a></p>
+</div>
+
+<div class="col-md-4">
+    <h2>Refresh data source</h2>
+    <p>This button allows users to refresh customer's data into the datastore</p>
+    <p><a class="btn btn-default" href="javascript:refresh()">Refresh customers data</a></p>
+</div>
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div> <h2> <u>Table of Customers Data</u> </h2> </div>
+        <table id="customerTable" class="table table-striped table-bordered" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Given Name</th>
+                    <th>Family Name</th>
+                    <th>Company Name</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @if (ViewBag.Customers != null)
+                {
+                    foreach (var customer in ViewBag.Customers)
+                    {
+                        <tr>
+                            <td>@customer.GivenName</td>
+                            <td>@customer.FamilyName</td>
+                            <td>@customer.CompanyName</td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    if (ViewBag.Message == null && ViewBag.CustomersFromDB != null)
+                    {
+                        foreach (var customer in ViewBag.CustomersFromDB)
+                        {
+                            <tr>
+                                <td>@customer.GivenName</td>
+                                <td>@customer.FamilyName</td>
+                                <td>@customer.CompanyName</td>
+                            </tr>
+                        }
+                    }
+
+                }
+            </tbody>
+
+        </table>
+    </div>
+</div>
+
+@section Scripts{
+
+    <script src=" https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap4.min.js"></script>
+
+   
+    
+    
+    <script type="text/javascript">
+
+
+        function connect() {
+            location.href = '@Url.Action("InitiateAuth","QuickBooks")';
+        }
+
+        function fetch() {
+            location.href = '@Url.Action("Index", "Service",new { realmId = @ViewBag.realmId})';
+        }
+
+        function refresh() {
+            location.href = '@Url.Action("Refresh", "Service",new { realmId = @ViewBag.realmId})';
+        }
+
+        $(document).ready(function () {
+            $('#customerTable').DataTable();
+        });
+
+    </script>
+
+}

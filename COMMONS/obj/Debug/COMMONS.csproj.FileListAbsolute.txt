@@ -1,0 +1,10 @@
+C:\inetpub\wwwroot\TestProjectReginald\COMMONS\bin\Debug\COMMONS.dll.config
+C:\inetpub\wwwroot\TestProjectReginald\COMMONS\bin\Debug\COMMONS.dll
+C:\inetpub\wwwroot\TestProjectReginald\COMMONS\bin\Debug\COMMONS.pdb
+C:\inetpub\wwwroot\TestProjectReginald\COMMONS\bin\Debug\EntityFramework.dll
+C:\inetpub\wwwroot\TestProjectReginald\COMMONS\bin\Debug\EntityFramework.xml
+C:\inetpub\wwwroot\TestProjectReginald\COMMONS\obj\Debug\COMMONS.csprojAssemblyReference.cache
+C:\inetpub\wwwroot\TestProjectReginald\COMMONS\obj\Debug\COMMONS.csproj.CoreCompileInputs.cache
+C:\inetpub\wwwroot\TestProjectReginald\COMMONS\obj\Debug\COMMONS.csproj.CopyComplete
+C:\inetpub\wwwroot\TestProjectReginald\COMMONS\obj\Debug\COMMONS.dll
+C:\inetpub\wwwroot\TestProjectReginald\COMMONS\obj\Debug\COMMONS.pdb
